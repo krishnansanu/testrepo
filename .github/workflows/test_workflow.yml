@@ -1,0 +1,19 @@
+name: test_workflow_trigger
+
+on:
+  workflow_dispatch
+
+env:
+  greeting_name: Github
+  greeting_msg: Welcome, 
+
+jobs:
+  greeting-job:
+    name: greeting_job
+    runs-on: ubuntu-latest
+    steps:
+      - name: print_msg
+        env:
+          greeting_name: Krish
+        run: |
+          echo $greeting_msg $greeting_name
