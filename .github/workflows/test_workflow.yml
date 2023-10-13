@@ -4,16 +4,61 @@ on:
   workflow_dispatch
 
 env:
-  greeting_name: Github
-  greeting_msg: Welcome, 
+  action_type: 'CI - '
+  action_env: 'default'
 
 jobs:
-  greeting-job:
-    name: greeting_job
+  ci-build:
+    name: ci-build
+    env:
+      action_type: 'CI - '
+      action_env: 'dev'
+      
     runs-on: ubuntu-latest
     steps:
-      - name: print_msg
-        env:
-          greeting_name: Krish
+      - name: create-build
         run: |
-          echo $greeting_msg $greeting_name
+          echo $action_type $action_type
+          sleep 10
+
+  cd-test:
+    name: cd-test
+    needs: ci-build
+    env:
+      action_type: 'CD - '
+      action_env: 'test'
+    
+    runs-on: ubuntu-latest
+    steps:
+      - name: create-build
+        run: |
+          echo $action_type $action_type
+          sleep 10
+    
+  cd-uat:
+    name: cd-uat
+    needs: cd-test
+    env:
+      action_type: 'CD - '
+      action_env: 'uat'
+    
+    runs-on: ubuntu-latest
+    steps:
+      - name: create-build
+        run: |
+          echo $action_type $action_type
+          sleep 10
+  
+  
+  cd-prod:
+    name: cd-prod
+    needs: cd-uat
+    env:
+      action_type: 'CD - '
+      action_env: 'prod'
+    
+    runs-on: ubuntu-latest
+    steps:
+      - name: create-build
+        run: |
+          echo $action_type $action_type
