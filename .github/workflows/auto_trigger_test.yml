@@ -1,0 +1,17 @@
+name: auto_trigger_test
+
+on:
+  push:
+    branches: 
+      - main
+    paths:
+      - 'com/src/**'
+
+   jobs:
+     print_default_values:
+       name: print_default_values
+       runs-on: ubuntu-latest
+       run: |
+         echo "Printing Default values - "
+         echo "$GITHUB_ACTION - $env:GITHUB_ACTION"
+  
