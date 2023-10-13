@@ -23,6 +23,7 @@ jobs:
 
   cd-test:
     name: cd-test
+    environment: 'test'
     needs: ci-build
     env:
       action_type: 'CD - '
@@ -37,6 +38,7 @@ jobs:
     
   cd-uat:
     name: cd-uat
+    environment: 'test'
     needs: cd-test
     env:
       action_type: 'CD - '
@@ -52,6 +54,7 @@ jobs:
   
   cd-prod:
     name: cd-prod
+    environment: 'test'
     needs: cd-uat
     env:
       action_type: 'CD - '
