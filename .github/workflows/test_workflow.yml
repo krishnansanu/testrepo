@@ -19,7 +19,7 @@ jobs:
       - name: create-build
         run: |
           echo $action_type $action_env
-          sleep 10
+
 
   cd-test:
     name: cd-test
@@ -34,7 +34,6 @@ jobs:
       - name: create-build
         run: |
           echo $action_type $action_env
-          sleep 10
     
   cd-uat:
     name: cd-uat
@@ -49,8 +48,6 @@ jobs:
       - name: create-build
         run: |
           echo $action_type $action_env
-          sleep 10
-  
   
   cd-prod:
     name: cd-prod
