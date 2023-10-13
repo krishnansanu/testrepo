@@ -18,7 +18,7 @@ jobs:
     steps:
       - name: create-build
         run: |
-          echo $action_type $action_type
+          echo $action_type $action_env
           sleep 10
 
   cd-test:
@@ -32,7 +32,7 @@ jobs:
     steps:
       - name: create-build
         run: |
-          echo $action_type $action_type
+          echo $action_type $action_env
           sleep 10
     
   cd-uat:
@@ -46,7 +46,7 @@ jobs:
     steps:
       - name: create-build
         run: |
-          echo $action_type $action_type
+          echo $action_type $action_env
           sleep 10
   
   
@@ -61,4 +61,4 @@ jobs:
     steps:
       - name: create-build
         run: |
-          echo $action_type $action_type
+          echo $action_type $action_env
