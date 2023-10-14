@@ -15,7 +15,7 @@ jobs:
     steps:
       - name: print_commit_sha
         run: |
-          echo "Commit Sha Input - $github.event.inputs.commit_sha"
+          echo "Commit Sha Input - ${{ github.event.inputs.commit_sha }}"
           
       - name: check_out
         uses: actions/checkout@v4
