@@ -21,40 +21,4 @@ jobs:
           echo "Latest Commit happened - $GIT_EVENT_REF "
           echo "Latest Commit sha - $GIT_COMMIT_SHA "
           echo "Github Workspace - $GITHUB_WORKSPACE "
-
-      - name: listing details
-        run: |
-          pwd && ls -altrh
-
-      - name: checkout dev branch
-        uses: actions/checkout@v4
-
-      - name: listing details
-        run: |
-          pwd && ls -altrh
-          echo "-------"
-          find -type f | grep com/quote
-      
-      - name: gitstatus
-        run: |
-          git status
-          echo "-------"
-          git branch
-          
-        
-      - name: checkout uat branch
-        uses: actions/checkout@v4
-        with:
-          ref: uat
-      
-      - name: listing details
-        run: |
-          pwd && ls -altrh
-          echo "-------"
-          find -type f | grep com/quote
-      
-      - name: gitstatus
-        run: |
-          git status
-          echo "-------"
-          git branch
+          git show --stat '$GIT_COMMIT_SHA'
