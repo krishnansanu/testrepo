@@ -13,6 +13,13 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: print_commit_sha
+        run: |
+          echo "Commit Sha Input - $github.event.inputs.commit_sha"
+          
+      - name: check_out
+        uses: actions/checkout@v4
+        
       - name: display_details_based_on_commit_sha
         run: |
           git log --pretty="%h - %s" --since="2023-10-01" --no-merges -- t/
