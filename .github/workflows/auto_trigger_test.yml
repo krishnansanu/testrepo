@@ -8,7 +8,7 @@ on:
       - 'com/quotes/**'
 
 env:
-  GIT_COMMIT_SHA: $GITHUB_SHA
+  GIT_COMMIT_SHA: ${{github.sha}}
   GIT_EVENT_REF: ${{github.event.ref}}
 
 jobs:
