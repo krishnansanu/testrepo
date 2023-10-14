@@ -31,4 +31,4 @@ jobs:
           git config --global user.name 'GitHub Action'
           git config --global user.email 'action@github.com'
           git fetch                         # fetch branches
-          git checkout ${{ github.event.inputs.commit_sha }} -- $files # copy files from the source branch
+          git checkout ${{ github.ref }} -- $files # copy files from the source branch
