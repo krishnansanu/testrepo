@@ -1,0 +1,18 @@
+name: list_files_from_commit_sha
+
+on:
+  workflow_dispatch:
+    inputs:
+      commit_sha:
+        required: true
+        type: string
+
+jobs:
+  display_details:
+    name: display_details
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: display_details_based_on_commit_sha
+        run: |
+          git log --pretty="%h - %s" --since="2023-10-01" --no-merges -- t/
