@@ -24,13 +24,14 @@ jobs:
 
       - name: listing details
         run: |
-          pwd && ls -la
+          pwd && ls -altrh
+          find -type f | grep com/quote
           
       - name: checkout dev branch
         uses: actions/checkout@v4
 
       - name: listing details
         run: |
-          pwd && ls -la
-      
+          pwd && ls -altrh
+          find -type f | grep com/quote
         
