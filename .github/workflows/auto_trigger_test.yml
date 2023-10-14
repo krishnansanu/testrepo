@@ -32,11 +32,29 @@ jobs:
       - name: listing details
         run: |
           pwd && ls -altrh
+          echo "-------"
           find -type f | grep com/quote
       
       - name: gitstatus
         run: |
           git status
+          echo "-------"
           git branch
           
         
+      - name: checkout uat branch
+        uses: actions/checkout@v4
+        with:
+          ref: uat
+      
+      - name: listing details
+        run: |
+          pwd && ls -altrh
+          echo "-------"
+          find -type f | grep com/quote
+      
+      - name: gitstatus
+        run: |
+          git status
+          echo "-------"
+          git branch
