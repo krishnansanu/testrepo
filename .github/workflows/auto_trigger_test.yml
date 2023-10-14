@@ -32,16 +32,11 @@ jobs:
       - name: listing details
         run: |
           pwd && ls -altrh
-      
-      - name: greptype
-        run: |
           find -type f | grep com/quote
-
+      
       - name: gitstatus
         run: |
           git status
-      
-      - name: gitbranchcheck
-        run: |
           git branch
+          
         
