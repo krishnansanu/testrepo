@@ -26,10 +26,6 @@ jobs:
         run: |
           pwd && ls -altrh
 
-      - name: greptype
-        run: |
-          find -type f | grep com/quote
-          
       - name: checkout dev branch
         uses: actions/checkout@v4
 
