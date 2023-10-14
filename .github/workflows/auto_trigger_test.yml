@@ -24,9 +24,13 @@ jobs:
 
       - name: listing details
         run: |
-          pwd && ls -lrth
+          pwd && ls -la
           
       - name: checkout dev branch
         uses: actions/checkout@v4
-        
+
+      - name: listing details
+        run: |
+          pwd && ls -la
+      
         
