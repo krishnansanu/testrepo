@@ -20,6 +20,15 @@ jobs:
       - name: check_out
         uses: actions/checkout@v4
         
+      
+
       - name: display_details_based_on_commit_sha
+        env:
+          SRC_FOLDER_PATH: 'com/src/'
         run: |
-          git log --pretty="%h - %s" --since="2023-10-01" --no-merges -- t/
+          files=$(find $SRC_FOLDER_PATH -type f) # get the file list
+          echo "files ---> $files "
+          git config --global user.name 'GitHub Action'
+          git config --global user.email 'action@github.com'
+          git fetch                         # fetch branches
+          git checkout ${{ github.event.inputs.commit_sha }} -- $files # copy files from the source branch
