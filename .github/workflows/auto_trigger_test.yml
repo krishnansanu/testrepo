@@ -27,4 +27,4 @@ jobs:
 
       - name: Modified Files details
         run: | 
-          git show --stat '$GIT_COMMIT_SHA'
+          git show --stat $GIT_COMMIT_SHA
