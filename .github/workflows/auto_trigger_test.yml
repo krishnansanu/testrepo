@@ -18,5 +18,15 @@ jobs:
     steps:
       - name: "Extracting information from the latest commit"
         run: |
-          echo "Latest Commit happened - $GIT_EVENT_REF"
-          echo "Latest Commit sha - $GIT_COMMIT_SHA"
+          echo "Latest Commit happened - $GIT_EVENT_REF "
+          echo "Latest Commit sha - $GIT_COMMIT_SHA "
+          echo "Github Workspace - $GITHUB_WORKSPACE "
+
+      - name: listing details
+        run: |
+          pwd && ls -lrth
+          
+      - name: checkout dev branch
+        uses: actions/checkout@v4
+        
+        
