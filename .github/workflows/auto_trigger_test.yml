@@ -3,7 +3,7 @@ name: auto_trigger_test
 on:
   push:
     branches:
-      - 'main'
+      - 'dev'
     paths:
       - 'com/quotes/**'
 
