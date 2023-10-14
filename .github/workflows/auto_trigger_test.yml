@@ -25,6 +25,9 @@ jobs:
       - name: listing details
         run: |
           pwd && ls -altrh
+
+      - name: greptype
+        run: |
           find -type f | grep com/quote
           
       - name: checkout dev branch
@@ -33,5 +36,8 @@ jobs:
       - name: listing details
         run: |
           pwd && ls -altrh
+      
+      - name: greptype
+        run: |
           find -type f | grep com/quote
         
