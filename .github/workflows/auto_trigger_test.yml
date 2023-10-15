@@ -55,12 +55,6 @@ jobs:
         echo "Checking Status"
         git status
 
-        echo "Adding changes to the staging area"
-        git add .
-
-        echo "Commiting the changes"
-        git commit -m "Git Pipeline Deployment from DEV ( $GIT_COMMIT_SHA ) to UAT "
-
         echo "pushing the changes to UAT"
         git push
 
