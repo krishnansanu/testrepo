@@ -50,7 +50,7 @@ jobs:
         git config --global user.name "krishnansanu"
         
         echo "Cherry-picking from Dev branch."
-        git cherry-pick $GIT_COMMIT_SHA
+        git cherry-pick -X theirs $GIT_COMMIT_SHA
 
         echo "Checking Status"
         git status
