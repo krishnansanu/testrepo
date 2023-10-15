@@ -44,7 +44,7 @@ jobs:
         ref: uat
         fetch-depth: 0
 
-    - name: "Deploying Changes from DEV GH to UAT GH."
+    - name: "Deploying Changes from DEV branch to UAT branch."
       run: |
         echo "Cherry-picking from Dev branch."
         git cherry-pick $GIT_COMMIT_SHA
