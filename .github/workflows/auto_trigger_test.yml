@@ -29,4 +29,4 @@ jobs:
         run: | 
           git show --stat $GIT_COMMIT_SHA
           echo "-------------------------"
-          git show --stat 'f51ed9effaf6edad40f609647975195e56268229'
+          git show --stat f51ed9effaf6edad40f609647975195e56268229
