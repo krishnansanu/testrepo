@@ -62,6 +62,6 @@ jobs:
         git commit -m "Git Pipeline Deployment from DEV ( $GIT_COMMIT_SHA ) to UAT "
 
         echo "pushing the changes to UAT"
-        git push -u origin uat
+        git push
 
         echo "Completed commit!!!"
