@@ -31,3 +31,5 @@ jobs:
           git show --stat $GIT_COMMIT_SHA_UAT
           echo ""
           pwd
+          echo ""
+          cat com/quotes/benefits.quote
