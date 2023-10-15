@@ -10,6 +10,7 @@ on:
 env:
   GIT_COMMIT_SHA: ${{github.sha}}
   GIT_EVENT_REF: ${{github.event.ref}}
+  GIT_COMMIT_MSG: ${{github.event.head_commit.message}}
 
 jobs:
   ci-dev:
@@ -20,6 +21,7 @@ jobs:
         run: |
           echo "Latest Commit happened - $GIT_EVENT_REF "
           echo "Latest Commit sha - $GIT_COMMIT_SHA "
+          echo "Latest Commit message - $GIT_COMMIT_MSG"
           echo "Github Workspace - $GITHUB_WORKSPACE "
       
       - name: "Checkout DEV branch."
@@ -33,6 +35,7 @@ jobs:
   
   cd-uat:
     name: "CD - UAT Deployment"
+    if: starstartsWith(github.event.head_commit.message, 'Deploy -')
     environment: approval_env
     runs-on: ubuntu-latest
     needs: ci-dev
