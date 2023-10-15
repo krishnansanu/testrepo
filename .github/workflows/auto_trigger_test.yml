@@ -12,24 +12,52 @@ env:
   GIT_EVENT_REF: ${{github.event.ref}}
 
 jobs:
-  identify_changes:
-    name: identify_changes
+  ci-dev:
+    name: "CI - Dev - Identifying Changes"
     runs-on: ubuntu-latest
     steps:
-      - name: "Extracting information from the latest commit"
+      - name: "Identifying Git Event Details."
         run: |
           echo "Latest Commit happened - $GIT_EVENT_REF "
           echo "Latest Commit sha - $GIT_COMMIT_SHA "
           echo "Github Workspace - $GITHUB_WORKSPACE "
       
-      - name: checkout dev branch
+      - name: "Checkout DEV branch."
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
 
-
-      - name: Modified Files details
+      - name: "Identifying list of updated files/folders."
         run: | 
           git show --stat $GIT_COMMIT_SHA
-          echo "-------------------------"
-          git show --stat f51ed9effaf6edad40f609647975195e56268229
+  
+  cd-uat:
+    name: "CD - UAT Deployment"
+    environment: approval_env
+    runs-on: ubuntu-latest
+    needs: ci-dev
+    
+    steps:
+    - name: "Checkout UAT branch."
+      uses: actions/checkout@v4
+      with:
+        ref: uat
+
+    - name: "Deploying Changes from DEV GH to UAT GH."
+      run: |
+        echo "Cherry-picking from Dev branch."
+        git cherry-pick $GIT_COMMIT_SHA
+
+        echo "Checking Status"
+        git status
+
+        echo "Adding changes to the staging area"
+        git add .
+
+        echo "Commiting the changes"
+        git commit -m "Git Pipeline Deployment from DEV ( $GIT_COMMIT_SHA ) to UAT "
+
+        echo "pushing the changes to UAT"
+        git push -u origin uat
+
+        echo "Completed commit!!!"
