@@ -46,6 +46,9 @@ jobs:
 
     - name: "Deploying Changes from DEV branch to UAT branch."
       run: |
+        git config --global user.email "krishboss11@gmail.com"
+        git config --global user.name "krishnansanu"
+        
         echo "Cherry-picking from Dev branch."
         git cherry-pick $GIT_COMMIT_SHA
 
