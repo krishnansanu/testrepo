@@ -1,4 +1,4 @@
-name: auto_trigger_test
+name: list_files_from_commit_sha
 
 on:
   workflow_dispatch
@@ -29,3 +29,5 @@ jobs:
           echo ""
           echo "Checking stats based on uat sha"
           git show --stat $GIT_COMMIT_SHA_UAT
+          echo ""
+          pwd
