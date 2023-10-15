@@ -4,8 +4,7 @@ on:
   workflow_dispatch
 
 env:
-  GIT_COMMIT_SHA_DEV: 'f42d66fb41268ad77521ec92c23f219bb0cc7a55'
-  GIT_COMMIT_SHA_UAT: '718d1b199dc4922f904db59ba87161b78e586b9d'
+  GIT_COMMIT_SHA_DEV: '7a0290919bc1d883d8c788162ecd32e53c15c3d3'
   
 
 jobs:
@@ -26,10 +25,8 @@ jobs:
         run: | 
           echo "Checking stats based on dev sha"
           git show --stat $GIT_COMMIT_SHA_DEV
-          echo ""
+          echo "---------------------------------"
           echo "Checking stats based on uat sha"
-          git show --stat $GIT_COMMIT_SHA_UAT
-          echo ""
-          pwd
-          echo ""
-          cat com/quotes/benefits.quote
+          git show --stat --name-only $GIT_COMMIT_SHA_DEV
+          echo "---------------------------------"
+          
