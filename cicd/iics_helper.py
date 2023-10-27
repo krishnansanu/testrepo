@@ -25,3 +25,11 @@ def iics_logout(login_url, sessionId)
   else
     print("Logout Successful")
     return 0
+
+
+
+#Invoking Function
+sessID=iics_login("https://dm-ap.informaticacloud.com/ma/api/v3/InternalLogin","
+Krishnan.Ravi.uat2","Simplya!@789")
+print("SessionID - " sessID)
+
