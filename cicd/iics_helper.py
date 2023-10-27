@@ -10,7 +10,7 @@ def iics_login(login_url, username, password):
   if response.status_code != 200:
     print("unable to login -" + response.text)
     return 99
-  else
+  else:
     print("Login request - Successful")
     json_response=response.json()
     return json["userInfo"]["sessionId"]
@@ -22,7 +22,7 @@ def iics_logout(login_url, sessionId):
   if response.status_code != 200:
     print("unable to logout -" + response.text)
     return 99
-  else
+  else:
     print("Logout Successful")
     return 0
 
