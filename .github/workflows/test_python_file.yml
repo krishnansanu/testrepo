@@ -1,0 +1,26 @@
+name: test_python
+
+on:
+  workflow_dispatch
+
+jobs:
+  informatica_processing:
+    name: "Informatica Processing"
+    runs-on: ubuntu-latest
+    steps:
+      - name: "Checkout DEV branch"
+        uses: actions/checkout@4
+      
+      - name: "Install Python"
+        uses: actions/setup-python@v3
+        with:
+          python-version: '3.x'
+
+      - name: "Install python Modules"
+        run: | 
+          python -m pip install --upgrade pip
+          pip install requests
+      
+      - name: "IICS login"
+        run: | 
+          python ./cicd/iics_helper.py
