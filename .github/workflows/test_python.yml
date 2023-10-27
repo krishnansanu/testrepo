@@ -24,4 +24,3 @@ jobs:
       - name: "IICS login"
         run: | 
           python ./cicd/iics_helper.py
-	
