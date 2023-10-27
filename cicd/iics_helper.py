@@ -2,7 +2,7 @@ import requests
 import json
 
 
-def iics_login(login_url, username, password)
+def iics_login(login_url, username, password):
   HEADERS={"content-type":"application/json"}
   BODY={"username":username,"password":password}
 
@@ -15,7 +15,7 @@ def iics_login(login_url, username, password)
     json_response=response.json()
     return json["userInfo"]["sessionId"]
 
-def iics_logout(login_url, sessionId)
+def iics_logout(login_url, sessionId):
   HEADERS={"content-type":"application/json", "INFA-SESSION-ID":sessionId}
 
   response=requests.post(url=login_url, headers=HEADERS)
