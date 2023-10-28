@@ -3,8 +3,8 @@ import json
 
 
 def iics_login(login_url, username, password):
-  HEADERS={"content-type":"application/json"}
-  BODY={"username":username,"password":password}
+  HEADERS = {"content-type":"application/json"}
+  BODY = {"username":username,"password":password}
 
   response=requests.post(url=login_url, headers=HEADERS, json=BODY)
   
@@ -17,7 +17,7 @@ def iics_login(login_url, username, password):
     return json["userInfo"]["sessionId"]
 
 def iics_logout(login_url, sessionId):
-  HEADERS={"content-type":"application/json", "INFA-SESSION-ID":sessionId}
+  HEADERS = {"content-type":"application/json", "INFA-SESSION-ID":sessionId}
 
   response=requests.post(url=login_url, headers=HEADERS)
   if response.status_code != 200:
@@ -30,5 +30,5 @@ def iics_logout(login_url, sessionId):
 
 
 #Invoking Function
-sessID=iics_login("https://dm-ap.informaticacloud.com/ma/api/v3/InternalLogin","Krishnan.Ravi.uat2","Simplya!@789")
+sessID = iics_login("https://dm-ap.informaticacloud.com/ma/api/v3/InternalLogin","Krishnan.Ravi.uat2","Simplya!@789")
 print("SessionID - " + sessID)
