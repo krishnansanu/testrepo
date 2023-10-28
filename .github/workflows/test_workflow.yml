@@ -29,7 +29,7 @@ jobs:
       - name: test-print-variable
         run: |
           echo "Printing my_var - ${{ env.my_var }}"
-          echo "Action Color - ${{ jobs.ci-build.outputs.action_color }}"
+          echo "Action Color - ${{ ci-build.outputs.action_color }}"
 
   cd-test:
     name: cd-test
