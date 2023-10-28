@@ -6,7 +6,8 @@ def iics_login(login_url, username, password):
   HEADERS={"content-type":"application/json"}
   BODY={"username":username,"password":password}
 
-  response=requests.post(url=login_url, headers=HEADERS, body=BODY)
+  response=requests.post(url=login_url, headers=HEADERS, json=BODY)
+  
   if response.status_code != 200:
     print("unable to login -" + response.text)
     return 99
@@ -31,4 +32,3 @@ def iics_logout(login_url, sessionId):
 #Invoking Function
 sessID=iics_login("https://dm-ap.informaticacloud.com/ma/api/v3/InternalLogin","Krishnan.Ravi.uat2","Simplya!@789")
 print("SessionID - " + sessID)
-
