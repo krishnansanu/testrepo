@@ -10,9 +10,17 @@ def my_func(URL,username,password):
 	print(data)
     
 	response=requests.post(url=URL, data=json.dumps(data), headers=headers)
+
+	if response.status_code != 200:
+		print("unable to login - " + response.text)
+		return 99
+	else:
+		jresponse=response.json()
+		return jresponse["userInfo"]["sessionId"]
     
 
-my_func('https://dm-ap.informaticacloud.com/ma/api/v3/InternalLogin','Krishnan.Ravi.uat2','Simplya!@789')
+sessID = my_func('https://dm-ap.informaticacloud.com/ma/api/v3/InternalLogin','Krishnan.Ravi.uat2','Simplya!@789')
+print("Session ID - " + sessID)
 	
 
 
