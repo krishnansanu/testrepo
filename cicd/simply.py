@@ -31,9 +31,15 @@ def iics_logout(URL,sessionId):
 		return 0
 
 iics_user_name = os.environ['IICS_USER_NAME']
+  iics_password = os.environ['IICS_PASSWORD']
+  iics_login_url = os.environ['IICS_LOGIN_URL']
+  iics_logout_url = os.environ['IICS_LOGOUT_URL']
 
-sessionId = iics_login('https://dm-ap.informaticacloud.com/ma/api/v3/InternalLogin',iics_user_name,'Simplya!@789')
+print("login-url: " + iics_login_url)
+print("logout-url: " + iics_logout_url)
+
+sessionId = iics_login(iics_login_url,iics_user_name,iics_password)
 print("Session ID - " + sessionId)
 	
-iics_logout('https://dm-ap.informaticacloud.com/saas/public/core/v3/logout',sessionId)
+iics_logout(iics_logout_url,sessionId)
 
