@@ -17,13 +17,16 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: create-build
+        id: dev-build
         run: |
           echo $action_type $action_env
           echo my_var="DEV_VALUE" >> $GITHUB_ENV
+          echo action_color="Yellow" >> $GITHUB_OUTPUT
 
       - name: test-print-variable
         run: |
           echo "Printing my_var - ${{ env.my_var }}"
+          echo "Action Color - ${{ steps.dev-build.outputs.action_color }}"
 
   cd-test:
     name: cd-test
@@ -39,6 +42,7 @@ jobs:
         run: |
           echo $action_type $action_env
           echo "Printing my_var - ${{ env.my_var }}"
+          echo "Action Color - ${{ steps.dev-build.outputs.action_color }}"
     
   cd-uat:
     name: cd-uat
