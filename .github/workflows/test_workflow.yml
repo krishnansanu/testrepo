@@ -10,11 +10,14 @@ env:
 jobs:
   ci-build:
     name: ci-build
-    env:
+    env: 
       action_type: 'CI - '
       action_env: 'dev'
       
     runs-on: ubuntu-latest
+
+    outputs:
+      action_color: ${{ steps.dev-build.outputs.action_color }}
     steps:
       - name: create-build
         id: dev-build
@@ -26,7 +29,7 @@ jobs:
       - name: test-print-variable
         run: |
           echo "Printing my_var - ${{ env.my_var }}"
-          echo "Action Color - ${{ steps.dev-build.outputs.action_color }}"
+          echo "Action Color - ${{ jobs.ci-build.outputs.action_color }}"
 
   cd-test:
     name: cd-test
