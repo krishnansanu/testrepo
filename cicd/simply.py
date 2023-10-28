@@ -18,7 +18,7 @@ def iics_login(URL,username,password):
     
 
 def iics_logout(URL,sessionId):
-	headers = {'content-type':'application/json'}
+	headers = {'content-type':'application/json', 'INFA-SESSION-ID':sessionId}
 
 	response=requests.post(url=URL, headers=headers)
 	if response.status_code != 200:
