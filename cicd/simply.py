@@ -31,9 +31,9 @@ def iics_logout(URL,sessionId):
 		return 0
 
 iics_user_name = os.environ['IICS_USER_NAME']
-  iics_password = os.environ['IICS_PASSWORD']
-  iics_login_url = os.environ['IICS_LOGIN_URL']
-  iics_logout_url = os.environ['IICS_LOGOUT_URL']
+iics_password = os.environ['IICS_PASSWORD']
+iics_login_url = os.environ['IICS_LOGIN_URL']
+iics_logout_url = os.environ['IICS_LOGOUT_URL']
 
 print("login-url: " + iics_login_url)
 print("logout-url: " + iics_logout_url)
