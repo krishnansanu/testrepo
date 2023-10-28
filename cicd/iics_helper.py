@@ -2,11 +2,12 @@ import requests
 import json
 
 
-def iics_login(login_url, username, password):
+def iics_login(username, password):
+  URL="https://dm-ap.informaticacloud.com/ma/api/v3/InternalLogin"
   HEADERS = {"content-type":"application/json"}
   BODY = {"username":username,"password":password}
 
-  response=requests.post(url=login_url, headers=HEADERS, json=BODY)
+  response=requests.post(url=URL, headers=HEADERS, json=BODY)
   
   if response.status_code != 200:
     print("unable to login -" + response.text)
@@ -30,5 +31,5 @@ def iics_logout(login_url, sessionId):
 
 
 #Invoking Function
-sessID = iics_login("https://dm-ap.informaticacloud.com/ma/api/v3/InternalLogin","Krishnan.Ravi.uat2","Simplya!@789")
+sessID = iics_login("Krishnan.Ravi.uat2","Simplya!@789")
 print("SessionID - " + sessID)
