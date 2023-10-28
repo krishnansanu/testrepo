@@ -2,31 +2,34 @@ import requests
 import json
 
 
-def my_func(URL,username,password):
+def iics_login(URL,username,password):
 	headers = {'content-type':'application/json'}
 	data = {"username":username,"password":password}
-	print("URL - " + URL)
-	print(headers)
-	print(data)
-    
+
 	response=requests.post(url=URL, data=json.dumps(data), headers=headers)
 
 	if response.status_code != 200:
 		print("unable to login - " + response.text)
 		return 99
 	else:
+		print("Login Successful")
 		jresponse=response.json()
 		return jresponse["userInfo"]["sessionId"]
     
 
-sessID = my_func('https://dm-ap.informaticacloud.com/ma/api/v3/InternalLogin','Krishnan.Ravi.uat2','Simplya!@789')
-print("Session ID - " + sessID)
+def iics_logout(URL,sessionId):
+	headers = {'content-type':'application/json'}
+
+	response=requests.post(url=URL, headers=headers)
+	if response.status_code != 200:
+		print("unable to logout - " + response.text)
+		return 99
+	else:
+		print("Logout Successful")
+		return 0
+
+sessionId = iics_login('https://dm-ap.informaticacloud.com/ma/api/v3/InternalLogin','Krishnan.Ravi.uat2','Simplya!@789')
+print("Session ID - " + sessionId)
 	
-
-
-#URL = 'https://www.w3schools.com/python/demopage.php'
-#myobj = {'somekey': 'somevalue'}
-#x = requests.post(url=URL, json = myobj)
-#print the response text (the content of the requested file):
-
+iics_logout('https://dm-ap.informaticacloud.com/saas/public/core/v3/logout',sessionId)
 
