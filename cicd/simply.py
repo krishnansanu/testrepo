@@ -28,6 +28,8 @@ def iics_logout(URL,sessionId):
 		print("Logout Successful")
 		return 0
 
+iics_user_name=os.environ['IICS_USER_NAME']
+print("Secrete User Name - " + iics_user_name)
 sessionId = iics_login('https://dm-ap.informaticacloud.com/ma/api/v3/InternalLogin','Krishnan.Ravi.uat2','Simplya!@789')
 print("Session ID - " + sessionId)
 	
