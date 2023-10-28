@@ -5,6 +5,9 @@ on:
 
 env:
   IICS_USER_NAME: ${{ secrets.IICS_USER_NAME }}
+  IICS_PASSWORD: ${{ secrets.IICS_password }}
+  IICS_LOGIN_URL: ${{ vars.IICS_LOGIN_URL }}
+  IICS_LOGOUT_URL: ${{ vars.IICS_LOGOUT_URL }}
 
 jobs:
   informatica_processing:
