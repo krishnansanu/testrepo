@@ -3,6 +3,9 @@ name: test_python
 on:
   workflow_dispatch
 
+env:
+  IICS_USER_NAME: ${{ secrets.IICS_USER_NAME }}
+
 jobs:
   informatica_processing:
     name: "Informatica Processing"
@@ -25,4 +28,5 @@ jobs:
       
       - name: "IICS login"
         run: | 
+          echo "IICS-USER-NAME: $IICS_USER_NAME "
           python ./cicd/simply.py
