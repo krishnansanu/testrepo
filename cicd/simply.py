@@ -34,9 +34,10 @@ def iics_logout(URL,sessionId):
 print("Reading command line values")
 print(sys.argv)
 
+VAR0="".join(sys.argv[0:])
 VAR1="".join(sys.argv[1:])
 VAR2="".join(sys.argv[2:])
-print(VAR1 + " - " + VAR2)
+print(VAR0 + " - "VAR1 + " - " + VAR2)
 
 
 
