@@ -29,9 +29,13 @@ jobs:
           python -m pip install --upgrade pip
           pip install requests
       
-      - name: "IICS login"
+      - name: "Variable setup"
         run: | 
           echo "IICS-USER-NAME: $IICS_USER_NAME "
           echo “TEST_ENV=TEST” >> $GITHUB_ENV
           echo “TEST_GIT_SHA=477336d90409008160563c4a29bfb7157321bd00” >> $GITHUB_ENV
+          echo "TGT_COMMIT_HASH=$(git log -1 --pretty=format:%H)" >> $GITHUB_ENV
+
+      - name: "IICS Login"
+        run: |
           python ./cicd/simply.py 'TEST' '477336d90409008160563c4a29bfb7157321bd00'
