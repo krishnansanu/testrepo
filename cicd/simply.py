@@ -45,9 +45,13 @@ iics_user_name = os.environ['IICS_USER_NAME']
 iics_password = os.environ['IICS_PASSWORD']
 iics_login_url = os.environ['IICS_LOGIN_URL']
 iics_logout_url = os.environ['IICS_LOGOUT_URL']
+test_env = os.environ['TEST_ENV']
+test_git_sha = os.environ['TEST_GIT_SHA']
 
 print("login-url: " + iics_login_url)
 print("logout-url: " + iics_logout_url)
+print("test-env: " + test_env)
+print("test_git_sha: " + test_git_sha)
 
 
 
