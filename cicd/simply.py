@@ -30,6 +30,14 @@ def iics_logout(URL,sessionId):
 		print("Logout Successful")
 		return 0
 
+
+print("Reading command line values")
+print(sys.argv)
+
+VAR1=sys.argv[1:]
+VAR2=sys.argv[2:]
+print(VAR1 + " - " + VAR2)
+
 iics_user_name = os.environ['IICS_USER_NAME']
 iics_password = os.environ['IICS_PASSWORD']
 iics_login_url = os.environ['IICS_LOGIN_URL']
@@ -37,6 +45,9 @@ iics_logout_url = os.environ['IICS_LOGOUT_URL']
 
 print("login-url: " + iics_login_url)
 print("logout-url: " + iics_logout_url)
+
+
+
 
 sessionId = iics_login(iics_login_url,iics_user_name,iics_password)
 print("Session ID - " + sessionId)
