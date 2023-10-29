@@ -34,9 +34,11 @@ def iics_logout(URL,sessionId):
 print("Reading command line values")
 print(sys.argv)
 
-VAR1=sys.argv[1:]
-VAR2=sys.argv[2:]
+VAR1="".join(sys.argv[1:])
+VAR2="".join(sys.argv[2:])
 print(VAR1 + " - " + VAR2)
+
+
 
 iics_user_name = os.environ['IICS_USER_NAME']
 iics_password = os.environ['IICS_PASSWORD']
