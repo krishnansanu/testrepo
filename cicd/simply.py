@@ -46,12 +46,16 @@ iics_password = os.environ['IICS_PASSWORD']
 iics_login_url = os.environ['IICS_LOGIN_URL']
 iics_logout_url = os.environ['IICS_LOGOUT_URL']
 
+TEST_ENV = os.environ['TEST_ENV']
+TEST_GIT_SHA = os.environ['TEST_GIT_SHA']
 TGT_COMMIT_HASH = os.environ['TGT_COMMIT_HASH']
 
 
 print("login-url: " + iics_login_url)
 print("logout-url: " + iics_logout_url)
 
+print("TEST_ENV: " + TEST_ENV)
+print("TEST_GIT_SHA: " + TEST_GIT_SHA)
 print("TGT_COMMIT_HASH: " + TGT_COMMIT_HASH)
 
 
