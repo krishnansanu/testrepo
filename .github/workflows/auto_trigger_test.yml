@@ -39,7 +39,9 @@ jobs:
     environment: approval_env
     runs-on: ubuntu-latest
     needs: ci-dev
-    
+    outputs:
+      UAT_COMMIT_SHA: ${{ steps.cd-uat.UAT_COMMIT_SHA}}
+  
     steps:
     - name: "Checkout UAT branch."
       uses: actions/checkout@v4
@@ -48,6 +50,7 @@ jobs:
         fetch-depth: 0
 
     - name: "Deploying Changes from DEV branch to UAT branch."
+      id: cd-uat
       run: |
         git config --global user.email "krishboss11@gmail.com"
         git config --global user.name "krishnansanu"
@@ -61,6 +64,18 @@ jobs:
         echo "pushing the changes to UAT"
         git push
 
-        echo "$(git log -1 --pretty=format:%H)"
-
         echo "Completed commit!!!"
+        
+        UAT_COMMIT_SHA=$(git log -1 --pretty=format:%H)
+        echo "UAT_COMMIT_SHA - $UAT_COMMIT_SHA"
+        echo UAT_COMMIT_SHA=$UAT_COMMIT_SHA >> $GITHUB_OUTPUT
+
+    - name: "Listing objects migrated from Dev to UAT"
+      run: |
+        git show --pretty="" --name-only $UAT_COMMIT_SHA
+
+    - name: "Syncing the code from UAT Repo to UAT IICS"
+      run: |
+        python ./cicd/iics_deploy.py 'UAT' $UAT_COMMIT_SHA 
+
+        
