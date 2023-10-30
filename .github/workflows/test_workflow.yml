@@ -46,7 +46,23 @@ jobs:
           echo $action_type $action_env
           echo "Printing my_var - ${{ env.my_var }}"
           echo "Action Color - ${{ needs.ci-build.outputs.action_color }}"
+
+  rollback-test:
+    name: rollback-test
+    environment: 'test'
+    needs: ci-build
+    env:
+      action_type: 'rollback - '
+      action_env: 'test'
     
+    runs-on: ubuntu-latest
+    steps:
+      - name: create-build
+        run: |
+          echo $action_type $action_env
+          echo "Printing my_var - ${{ env.my_var }}"
+          echo "Action Color - ${{ needs.ci-build.outputs.action_color }}"
+  
   cd-uat:
     name: cd-uat
     environment: 'test'
