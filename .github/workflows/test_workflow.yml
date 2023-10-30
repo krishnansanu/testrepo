@@ -50,7 +50,7 @@ jobs:
   rollback-test:
     name: rollback-test
     environment: 'test'
-    needs: ci-build
+    needs: cd-test
     env:
       action_type: 'rollback - '
       action_env: 'test'
