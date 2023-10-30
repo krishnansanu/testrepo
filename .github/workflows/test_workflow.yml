@@ -46,6 +46,8 @@ jobs:
           echo $action_type $action_env
           echo "Printing my_var - ${{ env.my_var }}"
           echo "Action Color - ${{ needs.ci-build.outputs.action_color }}"
+          echo "needs - ${{ needs.cd-uat.result }}"
+          echo "jobs - ${{ jobs.cd-uat.result }}"
 
   rollback-test:
     name: rollback-test
