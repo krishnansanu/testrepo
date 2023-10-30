@@ -34,6 +34,8 @@ jobs:
       - name: create-build
         run: |
           echo $action_type $action_env
+          echo ${{ needs.cd-uat.result }}
+          echo ${{ jobs.cd-uat.result }}
     
   cd-uat:
     name: cd-uat
